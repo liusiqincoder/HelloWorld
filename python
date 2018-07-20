@@ -1,0 +1,65 @@
+变量可以指向函数
+  eg:f=abs
+     f(-20)
+   >>20
+ 
+ 函数做参数的函数
+ map函数：将集合元素按传入函数做处理
+ def f(x):
+    return x*x
+print map(f, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+reduce函数和map函数相同，需要一个函数f和一个list
+f函数接收2个参数，返回一个数
+eg：ef prod(x, y):
+    return x*y
+print reduce(prod, [2, 4, 5, 7, 12])
+求list的全部乘积
+
+filter函数，筛选元素
+def is_odd(x):
+    return x % 2 == 1
+filter(is_odd, [1, 4, 6, 7, 9, 12, 17])
+
+sorted函数，排序
+def reversed_cmp(x, y):
+    if x > y:
+        return -1
+    if x < y:
+        return 1
+    return 0
+>>> sorted([36, 5, 12, 9, 21], reversed_cmp)
+[36, 21, 12, 9, 5]
+
+返回函数
+def calc_prod(lst):
+    def f(a,b):
+        return a*b
+    def prod():
+        return reduce(f,lst)
+    return prod
+
+f = calc_prod([1, 2, 3, 4])
+print f()
+>>24
+
+def calc_sum(lst):
+    def lazy_sum():
+        return sum(lst)
+    return lazy_sum
+注意: 发现没法把 lazy_sum 移到 calc_sum 的外部，因为它引用了 calc_sum 的参数 lst。
+像这种内层函数引用了外层函数的变量（参数也算变量），然后返回内层函数的情况，称为闭包（Closure）。(闭包的函数引用的局部变量最好不要变)
+def count():
+    fs = []
+    for i in range(1, 4):
+        def f(x):
+            def g():
+              return x*x
+            return g
+        fs.append(f(i))
+    return fs
+f1, f2, f3 = count()
+print f1(), f2(), f3()
+
+装饰器，高阶函数接收原函数返回新的函数
+能够简化代码，不动用原函数而添加功能
