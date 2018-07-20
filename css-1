@@ -1,0 +1,12 @@
+内联元素水平居中   text-align:center
+定宽块状元素水平居中   width:200px;margin:20px auto;
+
+不定宽度的块状元素有三种方法居中（这三种方法目前使用的都很多）：
+   1. 加入 table 标签
+   2. 设置 display: inline 方法：与第一种类似，显示类型设为 行内元素，进行不定宽元素的属性设置
+   3. 设置 position:relative 和 left:50%：利用 相对定位 的方式，将元素向左偏移 50% ，即达到居中的目的
+
+垂直居中  文本：设置父元素的height和line-height相同
+垂直居中-父元素高度确定的多行文本
+    1.设置父元素vertical-align:middle;
+    2.设置块状元素 display:table-cell;(兼容性不好，破坏了块状元素的性质)
