@@ -1,3 +1,4 @@
+#7.20
 变量可以指向函数
   eg:f=abs
      f(-20)
@@ -11,7 +12,7 @@ print map(f, [1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 reduce函数和map函数相同，需要一个函数f和一个list
 f函数接收2个参数，返回一个数
-eg：ef prod(x, y):
+eg：def prod(x, y):
     return x*y
 print reduce(prod, [2, 4, 5, 7, 12])
 求list的全部乘积
@@ -63,3 +64,53 @@ print f1(), f2(), f3()
 
 装饰器，高阶函数接收原函数返回新的函数
 能够简化代码，不动用原函数而添加功能
+eg：
+def show_time(f):
+    def inner():
+        start = time.time()
+        f()
+        end = time.time()
+        print('spend %s'%(end - start))
+    return inner
+
+@show_time #foo=show_time(f)
+def foo():
+    print('foo...')
+    time.sleep(1)
+foo()
+
+def bar():
+    print('bar...')
+    time.sleep(2)
+bar()
+
+输出结果：
+foo...
+spend 1.0005607604980469
+bar...
+
+通过args 和　*kwargs 传递被修饰函数中的参数
+def decorate(func):
+    def decorate_inner(*args, **kwargs):
+        print(type(args), type(kwargs))
+        print('args', args, 'kwargs', kwargs)
+        return func(*args, **kwargs)
+    return decorate_inner
+
+@decorate
+def func_1(*args, **kwargs):
+    print(args, kwargs)
+
+if __name__ == '__main__':
+    func_1('1', '2', '3', para_1='1', para_2='2', para_3='3')
+
+#返回结果
+#<class 'tuple'> <class 'dict'>
+# args ('1', '2', '3') kwargs {'para_1': '1', 'para_2': '2', 'para_3': '3'}
+# ('1', '2', '3') {'para_1': '1', 'para_2': '2', 'para_3': '3'}
+
+带参数的装饰器
+
+在上面的装饰器调用中，比如@show_time，该装饰器唯一的参数就是执行业务的函数。
+装饰器的语法允许我们在调用时，提供其它参数，比如@decorator(a)。这样，就为装饰器的编写和使用提供了更大的灵活性。
+https://www.cnblogs.com/gregoryli/p/7819341.html
