@@ -114,3 +114,40 @@ if __name__ == '__main__':
 在上面的装饰器调用中，比如@show_time，该装饰器唯一的参数就是执行业务的函数。
 装饰器的语法允许我们在调用时，提供其它参数，比如@decorator(a)。这样，就为装饰器的编写和使用提供了更大的灵活性。
 https://www.cnblogs.com/gregoryli/p/7819341.html
+
+7.22
+偏函数：
+functools.partial可以把一个参数多的函数变成一个参数少的新函数，少的参数需要在创建时指定默认值，这样，新函数调用的难度就降低了。
+>>> import functools
+>>> int2 = functools.partial(int, base=2)
+>>> int2('1000000')
+64
+动态导入模块
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
+
+模块函数重命名   import ....as...
+_future_模块，下一个版本的函数模块，可以试用
+
+pip安装外部文件
+pip installed  xxx.py (命令行下)
+
+class 类的创建
+class Person(object):
+    def __init__(self,name,gender,birth,job):
+        self.name=name
+        self.gender=gender
+        self.birth=birth
+        self.job=job
+ //必须要有self
+ 
+ 访问限制
+ 以双下划线开头的变量不能直接被外部访问
+ 如果一个属性以"__xxx__"的形式定义，那它又可以被外部访问了，以"__xxx__"定义的属性在Python的类中被称为特殊属性
+ 以单下划线开头的属性"_xxx"虽然也可以被外部访问，但是，按照习惯，他们不应该被外部访问。
+ 当实例属性和类属性重名时，实例属性优先级高，它将屏蔽掉对类属性的访问
+ 
+ 实例方法必须要有self参数
+ 方法也是属性
