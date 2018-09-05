@@ -10,8 +10,8 @@ JSP页面：静态部分（css和html）
         动态部分    注释<!--注释--> 或<%--注释--%>
                    指令<%@-----%>
                       page指令 语法<%@ page 属性名1="属性值" 属性名2="属性值" .....%>
-                           page指令属性有language，extends
-                      
+                           page指令属性有language，extends,import,pageEncoding,contentType,session,
+                           buffer,autoFlush,isErrorPage,errorPage,isThreadSafe,isELIgnored,include
                    脚本<%java代码%>
                    表达式<%=java表达式%>
                    声明<%!声明一个Java类或者方法%>
