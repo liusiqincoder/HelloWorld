@@ -74,3 +74,47 @@ this.lastname=lastname;
 this.age=age;
 this.eyecolor=eyecolor;
 }
+2018.9.8 表单验证
+eg.
+function validateForm()
+{
+  var x=document.forms["myForm"]["fname"].value;
+  if (x==null || x=="")
+  {
+    alert("姓必须填写");
+    return false;
+  }
+}
+html调用validateForm:
+<form name="myForm" action="demo-form.php" onsubmit="return validateForm()" method="post">
+姓: <input type="text" name="fname">
+<input type="submit" value="提交">
+</form>
+验证api
+Dom方法
+checkValidity() 确认输入数据是否合法
+setCustomValidity() 修改自定义提示
+DOM属性
+validity 返回input是否合法
+validationMessage 	浏览器错误提示信息
+willValidate 	指定 input 是否需要验证
+.....
+javascrpit:void(表达式或值) 不返回值，但里面表达式会执行
+
+函数表达式
+JavaScript 函数可以通过一个表达式定义。
+函数表达式可以存储在变量中：
+实例
+var x = function (a, b) {return a * b}; 
+函数构造器：Function()
+var myFunction = new Function("a", "b", "return a * b");
+var x = myFunction(4, 3);
+
+函数提升（Hoisting）
+提升（Hoisting）是 JavaScript 默认将当前作用域提升到前面去的的行为。
+提升（Hoisting）应用在变量的声明与函数的声明。
+使用表达式定义函数时无法提升。
+
+匿名函数自动调用表达式：
+(function(){})()
+(函数定义)
