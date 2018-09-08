@@ -16,4 +16,12 @@ JSP页面：静态部分（css和html）
                    表达式<%=java表达式%>
                    声明<%!声明一个Java类或者方法%>
                    动作<jsp:动作名>开始，</jsp:动作名>结束
- 
+jsp内置对象（9个）   request 接受客户端发送来的请求信息（只包含HTTP报文的头部数据）
+                           表单提交方式：post（携带数据）和get
+                        主要方法：getParameter(),getParameter(String name),setAttribute(Key,value)....
+                   response 向客户端发送数据
+                        主要方法：encodeRedirectURL(String URL),encodeURL(url).....
+                                 sendRedirect(String Location)使用之前不能有信息输出
+                                      两个页面不属于同一个request,forward相反
+                   设置字符编码优先级：setCharacterEncoding,setContentType,默认ISO-8859-1
+                   
