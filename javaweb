@@ -16,12 +16,34 @@ JSP页面：静态部分（css和html）
                    表达式<%=java表达式%>
                    声明<%!声明一个Java类或者方法%>
                    动作<jsp:动作名>开始，</jsp:动作名>结束
+响应模式  客户端发送HTTP请求，服务器发送HTTP响应
 jsp内置对象（9个）   request 接受客户端发送来的请求信息（只包含HTTP报文的头部数据）
-                           表单提交方式：post（携带数据）和get
+                           表单提交方式：post（携带数据,数据量大，安全性高）和get（相反)
                         主要方法：getParameter(),getParameter(String name),setAttribute(Key,value)....
                    response 向客户端发送数据
                         主要方法：encodeRedirectURL(String URL),encodeURL(url).....
                                  sendRedirect(String Location)使用之前不能有信息输出
-                                      两个页面不属于同一个request,forward相反
+                                      两个页面不属于同一个request,URL地址栏会改变,forward相反
+                        PrintWriter输出总是提前于内置的out对象
                    设置字符编码优先级：setCharacterEncoding,setContentType,默认ISO-8859-1
-                   
+                   out对象  JspWriter类的实例  
+                         方法：println(),clear(),flush(),clearBuffer(),getBufferSize()...
+                   session  客户端与服务器的一次会话，是时间概念，指用户使用浏览的这段时间
+                             HttpSession类的实例
+                          方法：getCreationTime(),getId()....
+                          生命周期：1.会话中打开的超链接都属于同一个会话
+                                   2.只要当前会话没有关闭，重新打开浏览器窗口访问统一资源项目时属于同一次会话
+                                   3.将本次会话的所有界面关闭，再访问才属于不同会话
+                                   （旧会话还存在服务器，等到超时）
+                          销毁：1.调用session.invalidate()
+                               2.session过期
+                               3.服务器重启
+                    application  （servletContext实例）实现用户间的数据共享，可存放全局变量。开始于服务器启动，终止与服务器关闭
+                          方法：setAttribute(name,value),getServerInfo()
+                    page 保存当前页面信息
+                    pageContext 可以访问本页面的所有对象
+                          方法：getOut(),getPage()...setAttribute(name,attribute),include(url),forward(url)
+                    config servlet初始化时jsp向他传递信息的一个对象，包括servlet初始化需要的信息和服务器信息
+                          方法：个体Servlet Context(),getInitParameter(name),....
+                    Exception 页面运行异常时产生，必须把isErrorPage设置为true,才能应用
+                          方法：getMessage(),toString()...
