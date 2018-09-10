@@ -16,6 +16,11 @@ JSP页面：静态部分（css和html）
                    表达式<%=java表达式%>
                    声明<%!声明一个Java类或者方法%>
                    动作<jsp:动作名>开始，</jsp:动作名>结束
+                       <jsp:useBean>html代码和Java代码相分离，创建一个javaBean实例
+                           语法：<jsp:useBean id="name" scope="page|request|session|application"
+                                    class="page.class" beanName="beanName"/>(创建类为page.class的名为name的类实例)
+                       <jsp：setProperty name="beanName" property="propertyName" value="value">
+                             为name实例的propertyName赋值value(同样有<jsp：getProperty....>)
 响应模式  客户端发送HTTP请求，服务器发送HTTP响应
 jsp内置对象（9个）   request 接受客户端发送来的请求信息（只包含HTTP报文的头部数据）
                            表单提交方式：post（携带数据,数据量大，安全性高）和get（相反)
@@ -54,3 +59,4 @@ Cookie 由服务器写到客户端的小文件或字符串
       服务器设置Cookie到客户端response.addCookie(Cookie)
 URL重写    浏览器不支持或用户禁用Cookie,客户发送的请求将不包含Cookie中的sessionID
           此时，客户程序将会在URL尾部添加额外数据标志当前会话
+Header (request方法)包含请求的附加信息和客户端信息 Enumeration request.getHeaderName() 
