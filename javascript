@@ -118,3 +118,66 @@ var x = myFunction(4, 3);
 匿名函数自动调用表达式：
 (function(){})()
 (函数定义)
+
+函数参数（2018.9.10）
+参数规则
+JavaScript 函数定义时显式参数没有指定数据类型。
+JavaScript 函数对隐式参数没有进行类型检测。
+JavaScript 函数对隐式参数的个数没有进行检测。
+默认参数：eg
+function myFunction(x, y) {
+    if (y === undefined) {
+          y = 0;
+    } 
+}
+agrgument对象：包含函数调用的参数数组
+eg。
+x = sumAll(1, 123, 500, 115, 44, 88);
+function sumAll() {
+    var i, sum = 0;
+    for (i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    }
+    return sum;
+}
+值传递的参数在函数外不会改变，对象则会改变
+this关键字 对象本身
+函数既是HTML页面对象的函数，也是winow对象的函数
+
+闭包可以访问上一层函数的变量
+eg。
+var add = (function () {
+    var counter = 0;
+    return function () {return counter += 1;}//闭包函数
+})();
+ 
+add();
+add();
+add();
+// 计数器为 3
+
+    JavaScript 能够改变页面中的所有 HTML 元素   document.getElementById("p1").innerHTML="新文本!";
+    JavaScript 能够改变页面中的所有 HTML 属性   document.getElementById(id).attribute=新属性值
+    JavaScript 能够改变页面中的所有 CSS 样式    document.getElementById(id).style.property=新样式
+    JavaScript 能够对页面中的所有事件做出反应    
+    1.<button type="button"
+onclick="document.getElementById('id1').style.color='red'">
+点我!</button>
+    2.document.getElementById("myBtn").onclick=function(){displayDate()};
+    3.<body onload="checkCookies()">  (onload和unload事件进入或离开页面触发，检测访问者的浏览器类型和浏览器版本)
+    4.<input type="text" id="fname" onchange="upperCase()">  （onchange事件，改变字段时触发）
+    5.onmouseover和onmouseout事件，用户鼠标移入或者移出html元素时触发
+    6.onmousedown、onmouseup 以及 onclick 事件  
+       首先当点击鼠标按钮时，会触发 onmousedown 事件，当释放鼠标按钮时，
+       会触发 onmouseup 事件，最后，当完成鼠标点击时，会触发 onclick 事件
+    7.onfouse
+
+    通过 id 找到 HTML 元素    eg. var x=document.getElementById("intro"); 
+    通过标签名找到 HTML 元素   var y=x.getElementsByTagName("p");
+    通过类名找到 HTML 元素     var x=document.getElementsByClassName("intro"); 
+
+
+addEventListener()方法 可以向一个元素添加多个事件句柄
+     当你使用 addEventListener() 方法时, JavaScript 从 HTML 标记中分离开来，可读性更强， 在没有控制HTML标记时也可以添加事件监听。
+     你可以使用 removeEventListener() 方法来移除事件的监听。
+     语法：element.addEventListener(event, function, useCapture);（useCapture选择描述事件是冒泡还是捕获）
