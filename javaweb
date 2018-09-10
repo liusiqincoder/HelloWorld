@@ -47,3 +47,10 @@ jsp内置对象（9个）   request 接受客户端发送来的请求信息（�
                           方法：个体Servlet Context(),getInitParameter(name),....
                     Exception 页面运行异常时产生，必须把isErrorPage设置为true,才能应用
                           方法：getMessage(),toString()...
+setHeader(name,value),可以设置响应头(Refresh,刷新间隔)
+
+Cookie 由服务器写到客户端的小文件或字符串
+      方法:Cookie(name,value),getName(),getMaxAge(int)
+      服务器设置Cookie到客户端response.addCookie(Cookie)
+URL重写    浏览器不支持或用户禁用Cookie,客户发送的请求将不包含Cookie中的sessionID
+          此时，客户程序将会在URL尾部添加额外数据标志当前会话
