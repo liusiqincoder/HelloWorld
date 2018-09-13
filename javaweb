@@ -60,3 +60,10 @@ Cookie 由服务器写到客户端的小文件或字符串
 URL重写    浏览器不支持或用户禁用Cookie,客户发送的请求将不包含Cookie中的sessionID
           此时，客户程序将会在URL尾部添加额外数据标志当前会话
 Header (request方法)包含请求的附加信息和客户端信息 Enumeration request.getHeaderName() 
+
+JavaBean技术    提高代码的重用性
+       不可视JavaBean：值JavaBean（封装表单数据）和工具Javabean(封装业务逻辑)
+       可视Javabean
+       规范：1.实现可序列化接口  2.公共无参构造方法  3.类的声明是非final类
+       使用<jsp:useBean>创建JavaBean  语法：
+             <jsp:useBean id="beanName" class="classPath" sope="page|Request|Session|Application"/>
