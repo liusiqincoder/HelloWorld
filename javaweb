@@ -68,5 +68,30 @@ JavaBean技术    提高代码的重用性
        使用<jsp:useBean>创建JavaBean  语法：
              <jsp:useBean id="beanName" class="classPath" sope="page|Request|Session|Application"/>
  
- EL表达式
-     
+ EL表达式   语法格式：${expression}
+       在jsp网页中必须以"/${"开头，或"${'${'}"
+   特点：（1）EL语法简单，方便
+（2）EL可以与JSTL结合使用，也可以和JavaScript语句结合使用。
+（3）EL可以自动转换类型。
+（4）EL既可以访问一般的变量，也可以访问JavaBean中的属性和嵌套属性、集合对象。
+（5）EL中可以执行算术运算、逻辑运算、关系运算和条件运算等。
+（6）EL中可以获得命名空间（PageContext对象，他是页面中所有其他内置对象的最大范围的集成对象，通过它可以访问其他内置对象）。
+（7）EL中在进行除法运算时，如果除数是0，则返回无穷大Infinity，而不返回错误。
+（8）EL中可以访问JSP的作用域（request、session、application以及page）
+（9）扩展函数可以与Java类的静态方法进行映射。
+     禁用EL
+        1.使用'\'  即\$｛expression}   
+        2.使用page  ,<%@ page isELIgnored="true">
+        3.在web.xml配置<el-ignored>
+  变量存取范围  page(默认) request  session  application
+        eg.  ${pageScope.usenme｝
+  访问数据  1.${user[user-name]}
+           2.访问数组    ${arrUser[0]}
+           3.list集合读取 ${sessionScope.citys[0]}
+           3.map集合读取  ${applicationScope.citys[0]}
+  算术、关系、逻辑运算符，条件运算符   同java
+  empty运算符 判断对象或变量是否为空  ${not empty session.username}
+  隐含对象  pgeContext,param,header,cookie,pageScope
+  
+  
+  
