@@ -181,3 +181,71 @@ addEventListener()方法 可以向一个元素添加多个事件句柄
      当你使用 addEventListener() 方法时, JavaScript 从 HTML 标记中分离开来，可读性更强， 在没有控制HTML标记时也可以添加事件监听。
      你可以使用 removeEventListener() 方法来移除事件的监听。
      语法：element.addEventListener(event, function, useCapture);（useCapture选择描述事件是冒泡还是捕获）
+
+（9.13）
+appendChild（）要创建新的 HTML 元素 (节点)需要先创建一个元素，然后在已存在的元素中添加它。
+ var para = document.createElement("p");
+ var node = document.createTextNode("这是一个新的段落。");
+ para.appendChild(node);
+insertBefore（）将新元素插进开始位置
+removeChild()移除一个元素的子元素
+replaceChild() 方法来替换 HTML DOM 中的元素
+
+DOM集合
+Collection   var x=document.getElementsByTagName("p")
+     x是一个集合  可以使用x[i],x.length
+NodeList  所有浏览器的 childNodes 属性返回的是 NodeList 对象。
+          大部分浏览器的 querySelectorAll() 返回 NodeList 对象。
+          
+pcoll=document.querySelectorAll("p")
+plist=document.getElementsByTagName("p")
+以上 pcoll 返回的就是固定的值。
+而获取 plist 后, 若 html 页面有变化且刚好添加或移除了 p 标签, 此时plist也会跟着变。
+JavaScript for...in 循环
+
+person=new Object();
+person.firstname="John";
+等于
+person={firstname:"John",lastname:"Doe",age:50,eyecolor:"blue"}; 
+等于
+
+function person(firstname,lastname,age,eyecolor)
+{
+    this.firstname=firstname;
+    this.lastname=lastname;
+    this.age=age;
+    this.eyecolor=eyecolor;
+}
+
+Number对象
+    科学记数法  var y=123e5;    // 12300000
+    数字不分为整数类型和浮点型类型，所有的数字都是由 浮点型类型（64位）。
+    如果前缀为 0，则 JavaScript 会把数值常量解释为八进制数，如果前缀为 0 和 "x"，则解释为十六进制数。
+ 
+    var myNumber=128;
+    myNumber.toString(16);   // 返回 80
+    
+无穷大（Infinity）
+ isNaN() 全局函数来判断一个值是否是 NaN 值
+ 
+ var x = 123;
+var y = new Number(123);
+typeof(x) // 返回 Number
+typeof(y) // 返回 Object
+
+字符串对象String
+      使用位置（索引）可以访问字符串中任何的字符
+      可以在字符串中使用转义字符(\)使用引号  var answer="He is called \"Johnny\"";
+      length，indexOf(),lastIndexOf() ,match(),replace() ,toUpperCase() / toLowerCase(),split(),
+  
+Date
+    new Date() // 当前日期和时间
+    new Date(milliseconds) //返回从 1970 年 1 月 1 日至今的毫秒数
+    new Date(dateString)
+    new Date(year, month, day, hours, minutes, seconds, milliseconds)
+    
+    getFullYear() 获取年份
+    getTime() 返回从 1970 年 1 月 1 日至今的毫秒数
+    toUTCString()将当日的日期（根据 UTC）转换为字符串
+    getDay() 和数组来显示星期，而不仅仅是数字
+    
