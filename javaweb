@@ -67,3 +67,6 @@ JavaBean技术    提高代码的重用性
        规范：1.实现可序列化接口  2.公共无参构造方法  3.类的声明是非final类
        使用<jsp:useBean>创建JavaBean  语法：
              <jsp:useBean id="beanName" class="classPath" sope="page|Request|Session|Application"/>
+ 
+ EL表达式
+     
